@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-upload
-      action="http://gulimall-clouds.oss-cn-beijing.aliyuncs.com"
+      :action="ossAddr"
       :data="dataObj"
       list-type="picture"
       :multiple="false" :show-file-list="showFileList"
@@ -30,7 +30,7 @@ export default {
      computed: {
        imageUrl () {
          return this.value
-   },
+       },
        imageName () {
          if (this.value != null && this.value !== '') {
            return this.value.substr(this.value.lastIndexOf('/') + 1)
@@ -54,6 +54,7 @@ export default {
      },
      data () {
        return {
+         ossAddr: process.env.OSS,
          dataObj: {
            policy: '',
            signature: '',

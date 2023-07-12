@@ -45,10 +45,21 @@
         </template>
       </el-table-column>
       <el-table-column prop="createTime" header-align="center" align="center" label="注册时间"></el-table-column>
-      <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
+      <el-table-column fixed="right" header-align="center" align="center" width="180" label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small">送券</el-button>
           <el-button type="text" size="small">查订单</el-button>
+          <el-dropdown
+            @command="handleCommand(scope.row,$event)"
+            size="small"
+            split-button
+            type="text"
+          >
+            更多
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="memberAddress">配置地址</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </template>
       </el-table-column>
     </el-table>
@@ -111,6 +122,13 @@ export default {
         }
         this.dataListLoading = false
       })
+    },
+    // 处理更多指令
+    handleCommand (row, command) {
+      console.log('~~~~~', row, command)
+      if (command === 'memberAddress') {
+        this.$router.push({ path: '/member-memberreceiveaddress', query: { memberId: row.id } })
+      }
     },
     // 每页数
     sizeChangeHandle (val) {
