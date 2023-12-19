@@ -3,9 +3,7 @@
 <img src="https://raw.githubusercontent.com/wang-xiaowu/picture_repository/master/behappy_group.jpg" width="300px">
 
 ## node版本
-> https://github.com/renrenio/renren-fast-vue/issues/106
->
-> 使用node10
+> 使用v12.22.0
 
 ## renren-fast-vue
 - 账号密码：admin/admin
